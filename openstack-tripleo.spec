@@ -14,13 +14,9 @@ URL:			https://wiki.openstack.org/wiki/TripleO
 Source0:		https://github.com/openstack/%{repo_name}/archive/%{commit}.tar.gz
 Source1:		tripleo
 
-# Upstream switched to oslosphinx in https://review.openstack.org/#/c/73353/,
-# but that does not yet exist in Fedora.
-Patch0002:		0002-Switch-back-to-oslo.sphinx.patch
-Patch0003:		0003-Use-packaged-template-directory.patch
-
-# https://review.openstack.org/#/c/85024/
-Patch0005:		0005-Move-setup-clienttools-to-devtest_setup.sh.patch
+#
+# patches_base=stable/icehouse
+#
 
 BuildArch:		noarch
 
@@ -53,10 +49,6 @@ This package contains documentation files for TripleO.
 
 %prep
 %setup -q -n %{repo_name}-stable-%{alphatag}
-
-%patch0002 -p1
-%patch0003 -p1
-%patch0005 -p1
 
 %install
 # scripts
