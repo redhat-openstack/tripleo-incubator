@@ -1,0 +1,31 @@
+From 9cd21680504005a513e952968bf07b27ddfa2276 Mon Sep 17 00:00:00 2001
+From: James Slagle <jslagle@redhat.com>
+Date: Wed, 3 Sep 2014 17:13:27 -0400
+Subject: [PATCH] Switch back to oslo sphinx
+
+---
+ doc/source/conf.py    | 2 +-
+ test-requirements.txt | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/doc/source/conf.py b/doc/source/conf.py
+index baac650..3d2c6a1 100644
+--- a/doc/source/conf.py
++++ b/doc/source/conf.py
+@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.abspath('./'))
+ extensions = [
+     'sphinx.ext.autodoc',
+     'sphinx.ext.intersphinx',
+-    'oslosphinx',
++    'oslo.sphinx',
+     'ext.extract_docs'
+ ]
+ 
+diff --git a/test-requirements.txt b/test-requirements.txt
+index 3488df6..50e8c3d 100644
+--- a/test-requirements.txt
++++ b/test-requirements.txt
+@@ -1,2 +1,2 @@
+-oslosphinx
++oslo.sphinx
+ sphinx>=1.1.2,<1.2

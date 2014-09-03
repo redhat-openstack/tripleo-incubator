@@ -1,0 +1,35 @@
+From 120e866c5c4018d0445053fcb8bf517fa5039a7f Mon Sep 17 00:00:00 2001
+From: James Slagle <jslagle@redhat.com>
+Date: Wed, 3 Sep 2014 17:13:55 -0400
+Subject: [PATCH] Move setup-clienttools to devtest_setup.sh
+
+---
+ scripts/devtest_setup.sh     | 1 +
+ scripts/install-dependencies | 2 --
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/scripts/devtest_setup.sh b/scripts/devtest_setup.sh
+index 7ae8395..18f069a 100755
+--- a/scripts/devtest_setup.sh
++++ b/scripts/devtest_setup.sh
+@@ -233,6 +233,7 @@ fi
+ 
+ if [ "$USE_CACHE" == "0" ] ; then #nodocs
+     install-dependencies
++    setup-clienttools
+ fi #nodocs
+ 
+ ## #. (Optional) Run cleanup-env to delete VM's and storage pools from previous
+diff --git a/scripts/install-dependencies b/scripts/install-dependencies
+index 29c21e2..7b6a418 100755
+--- a/scripts/install-dependencies
++++ b/scripts/install-dependencies
+@@ -96,8 +96,6 @@ if [ "$os" = "suse" ]; then
+   sudo service openvswitch-switch restart
+ fi
+ 
+-setup-clienttools
+-
+ # libvirtd group
+ case "$os" in
+     'Debian' | 'suse')

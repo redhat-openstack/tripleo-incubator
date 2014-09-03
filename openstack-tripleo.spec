@@ -17,6 +17,9 @@ Source1:		tripleo
 #
 # patches_base=22b0a99471cec89afbc9db27b4b520226e0914b5
 #
+Patch0001: 0001-Switch-back-to-oslo-sphinx.patch
+Patch0002: 0002-Use-packaged-template-directory-path.patch
+Patch0003: 0003-Move-setup-clienttools-to-devtest_setup.sh.patch
 
 BuildArch:		noarch
 
@@ -50,6 +53,9 @@ This package contains documentation files for TripleO.
 %prep
 %setup -q -n %{repo_name}-stable-%{alphatag}
 
+%patch0001 -p1
+%patch0002 -p1
+%patch0003 -p1
 %install
 # scripts
 mkdir -p %{buildroot}/%{_libexecdir}/%{name}
