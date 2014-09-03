@@ -15,7 +15,7 @@ Source0:		https://github.com/openstack/%{repo_name}/archive/%{commit}.tar.gz
 Source1:		tripleo
 
 #
-# patches_base=stable/icehouse
+# patches_base=22b0a99471cec89afbc9db27b4b520226e0914b5
 #
 
 BuildArch:		noarch
