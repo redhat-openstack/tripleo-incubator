@@ -56,6 +56,7 @@ This package contains documentation files for TripleO.
 %patch0001 -p1
 %patch0002 -p1
 %patch0003 -p1
+
 %install
 # scripts
 mkdir -p %{buildroot}/%{_libexecdir}/%{name}
