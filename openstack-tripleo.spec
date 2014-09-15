@@ -1,6 +1,6 @@
 %global commit e3d474c49dd91aede1e7d39d85b84d5c826ebb86
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
-%global alphatag icehouse
+%global alphatag %commit
 %global repo_name tripleo-incubator
 
 Name:			openstack-tripleo
@@ -20,6 +20,12 @@ BuildRequires:		python-sphinx
 BuildRequires:		python-oslo-sphinx
 
 Requires:		jq
+
+#
+# patches_base=e3d474c49dd91aede1e7d39d85b84d5c826ebb86
+#
+Patch0001: 0001-Use-packaged-template-directory-path.patch
+Patch0002: 0002-Switch-back-to-oslo-sphinx.patch
 
 %description
 TripleO is a program aimed at installing, upgrading and operating OpenStack
@@ -44,14 +50,10 @@ nova, neutron and heat to automate fleet management at datacenter scale.
 This package contains documentation files for TripleO.
 
 %prep
-%setup -q -n %{repo_name}-stable-%{alphatag}
+%setup -q -n %{repo_name}-%{alphatag}
 
 %patch0001 -p1
-
-#
-# patches_base=e3d474c49dd91aede1e7d39d85b84d5c826ebb86
-#
-Patch0001: 0001-Use-packaged-template-directory-path.patch
+%patch0002 -p1
 
 %install
 # scripts
@@ -81,7 +83,6 @@ install -d -m 755 %{buildroot}%{_datadir}/doc/tripleo/html
 cp -r doc/build/html/* %{buildroot}%{_datadir}/doc/tripleo/html
 
 %files
-%doc LICENSE README.md
 %{_bindir}/*
 %{_libexecdir}/%{name}
 # These config files are *not* noreplace. They aren't meant to be edited by
@@ -90,7 +91,7 @@ cp -r doc/build/html/* %{buildroot}%{_datadir}/doc/tripleo/html
 %{_datadir}/tripleo
 
 %files doc
-%doc LICENSE README.md
+%doc LICENSE README.rst
 %{_datadir}/doc/tripleo
 
 %changelog
