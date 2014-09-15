@@ -1,11 +1,11 @@
-%global commit stable/icehouse
+%global commit e3d474c49dd91aede1e7d39d85b84d5c826ebb86
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global alphatag icehouse
 %global repo_name tripleo-incubator
 
 Name:			openstack-tripleo
-Version:		0.0.2
-Release:		7.%{alphatag}%{?dist}
+Version:		0.0.3
+Release:		1.%{alphatag}%{?dist}
 Summary:		OpenStack TripleO
 
 Group:			Applications/System
@@ -13,13 +13,6 @@ License:		ASL 2.0
 URL:			https://wiki.openstack.org/wiki/TripleO
 Source0:		https://github.com/openstack/%{repo_name}/archive/%{commit}.tar.gz
 Source1:		tripleo
-
-#
-# patches_base=22b0a99471cec89afbc9db27b4b520226e0914b5
-#
-Patch0001: 0001-Switch-back-to-oslo-sphinx.patch
-Patch0002: 0002-Use-packaged-template-directory-path.patch
-Patch0003: 0003-Move-setup-clienttools-to-devtest_setup.sh.patch
 
 BuildArch:		noarch
 
@@ -54,8 +47,11 @@ This package contains documentation files for TripleO.
 %setup -q -n %{repo_name}-stable-%{alphatag}
 
 %patch0001 -p1
-%patch0002 -p1
-%patch0003 -p1
+
+#
+# patches_base=e3d474c49dd91aede1e7d39d85b84d5c826ebb86
+#
+Patch0001: 0001-Use-packaged-template-directory-path.patch
 
 %install
 # scripts
@@ -98,6 +94,9 @@ cp -r doc/build/html/* %{buildroot}%{_datadir}/doc/tripleo/html
 %{_datadir}/doc/tripleo
 
 %changelog
+* Mon Sep 15 2014 James Slagle <jslagle@redhat.com> 0.0.3-1
+- Update to later version.
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.0.2-7.icehouse
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 

@@ -1,26 +1,29 @@
-From f9e844e8816338ec6d2b0eb30dfa0ccfdc09c09b Mon Sep 17 00:00:00 2001
+From fcf6a7efb01497bdaa4424e491b2d325b4486fa1 Mon Sep 17 00:00:00 2001
 From: James Slagle <jslagle@redhat.com>
 Date: Wed, 3 Sep 2014 17:13:40 -0400
 Subject: [PATCH] Use packaged template directory path
 
 ---
- scripts/configure-vm  | 2 +-
+ scripts/configure-vm  | 5 +----
  scripts/setup-network | 6 ++++--
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ 2 files changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/scripts/configure-vm b/scripts/configure-vm
-index 265552e..226d0f0 100755
+index 7c2f8c8..87ac096 100755
 --- a/scripts/configure-vm
 +++ b/scripts/configure-vm
-@@ -5,7 +5,7 @@ import os.path
+@@ -6,10 +6,7 @@ import random
  
  import libvirt
  
--templatedir = os.path.dirname(os.path.dirname(__file__)) + '/templates'
+-templatedir = os.path.join(
+-                os.path.dirname(
+-                  os.path.dirname(
+-                    os.path.abspath(__file__))), 'templates')
 +templatedir="/usr/share/tripleo/templates"
  
- def main():
-     parser = argparse.ArgumentParser(
+ def generate_bm_mac_address():
+     """Generate an Ethernet MAC address suitable for baremetal testing."""
 diff --git a/scripts/setup-network b/scripts/setup-network
 index 1d7c228..0e12482 100755
 --- a/scripts/setup-network
