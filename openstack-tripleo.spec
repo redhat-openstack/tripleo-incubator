@@ -1,10 +1,10 @@
-%global commit e3d474c49dd91aede1e7d39d85b84d5c826ebb86
+%global commit b51d5a1840b4e985b7daa334814a10590af00d53
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global alphatag %commit
 %global repo_name tripleo-incubator
 
 Name:			openstack-tripleo
-Version:		0.0.3
+Version:		0.0.4
 Release:		1.%{alphatag}%{?dist}
 Summary:		OpenStack TripleO
 
@@ -22,7 +22,7 @@ BuildRequires:		python-oslo-sphinx
 Requires:		jq
 
 #
-# patches_base=e3d474c49dd91aede1e7d39d85b84d5c826ebb86
+# patches_base=b51d5a1840b4e985b7daa334814a10590af00d53
 #
 Patch0001: 0001-Use-packaged-template-directory-path.patch
 Patch0002: 0002-Switch-back-to-oslo-sphinx.patch
@@ -95,6 +95,9 @@ cp -r doc/build/html/* %{buildroot}%{_datadir}/doc/tripleo/html
 %{_datadir}/doc/tripleo
 
 %changelog
+* Mon Sep 29 2014 James Slagle <jslagle@redhat.com> 0.0.4-1
+- Update to b51d5a1840b4e985b7daa334814a10590af00d53
+
 * Mon Sep 15 2014 James Slagle <jslagle@redhat.com> 0.0.3-1
 - Update to later version.
 
