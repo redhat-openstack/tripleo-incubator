@@ -1,0 +1,60 @@
+From 41b99513a6f3993b161e312e7d6307c3e9caae81 Mon Sep 17 00:00:00 2001
+From: James Slagle <jslagle@redhat.com>
+Date: Wed, 24 Sep 2014 13:58:58 -0400
+Subject: [PATCH] Support passing x86_64 to create-nodes
+
+x86_64 is the canonicalized arch for amd64 in Nova[1]. I think it makes
+sense to make our scripts (and thus our UI) a bit friendlier by making
+it as an accepted arch value. This will allow for the baremetal flavor
+to be created with x86_64 set as cpu_arch in the extra_specs so that if
+folks happened to register nodes with x86_64 instead of amd64 in Ironic,
+the flavor matching will work.
+
+[1] http://git.openstack.org/cgit/openstack/nova/tree/nova/compute/arch.py#n156
+
+Change-Id: I0f207a5b190bc2df86bc58fc62abc5ac6a93d73f
+---
+ scripts/boot-seed-vm  | 2 +-
+ scripts/create-nodes  | 2 +-
+ scripts/setup-seed-vm | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/boot-seed-vm b/scripts/boot-seed-vm
+index 4cc7092..e8a1ad3 100755
+--- a/scripts/boot-seed-vm
++++ b/scripts/boot-seed-vm
+@@ -107,7 +107,7 @@ SEED_ARCH=
+ 
+ case $ARCH in
+     i386) SEED_ARCH='i686'; ;;
+-    amd64) SEED_ARCH='x86_64'; ;;
++    amd64|x86_64) SEED_ARCH='x86_64'; ;;
+     *) echo "Unsupported arch $ARCH!" ; exit 1 ;;
+ esac
+ 
+diff --git a/scripts/create-nodes b/scripts/create-nodes
+index 5970c69..f6cf35c 100755
+--- a/scripts/create-nodes
++++ b/scripts/create-nodes
+@@ -12,7 +12,7 @@ NODE_DISK=$(( $DISK + 1))
+ 
+ case $4 in
+     i386) ARCH='i686' ;;
+-    amd64) ARCH='x86_64' ;;
++    amd64|x86_64) ARCH='x86_64' ;;
+     *) echo "Unsupported arch $4!" ; exit 1 ;;
+ esac
+ 
+diff --git a/scripts/setup-seed-vm b/scripts/setup-seed-vm
+index 9c3f676..4735878 100755
+--- a/scripts/setup-seed-vm
++++ b/scripts/setup-seed-vm
+@@ -96,7 +96,7 @@ SEED_ARCH=
+ 
+ case $ARCH in
+     i386) SEED_ARCH='i686'; ;;
+-    amd64) SEED_ARCH='x86_64'; ;;
++    amd64|x86_64) SEED_ARCH='x86_64'; ;;
+     *) echo "Unsupported arch $ARCH!" ; exit 1 ;;
+ esac
+ 

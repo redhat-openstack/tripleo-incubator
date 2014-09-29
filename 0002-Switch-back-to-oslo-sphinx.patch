@@ -1,4 +1,4 @@
-From 529524a6d17f3fa50e3af8c3453ea42bb2096b82 Mon Sep 17 00:00:00 2001
+From 3075504f77848d3dd024028454ac1ca7a3d85b66 Mon Sep 17 00:00:00 2001
 From: James Slagle <jslagle@redhat.com>
 Date: Wed, 3 Sep 2014 17:13:27 -0400
 Subject: [PATCH] Switch back to oslo sphinx
