@@ -1,4 +1,4 @@
-%global commit b51d5a1840b4e985b7daa334814a10590af00d53
+%global commit c3fb309727671130a32b4c19de48ec22c8530aa1
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global alphatag %commit
 %global repo_name tripleo-incubator
@@ -22,7 +22,7 @@ BuildRequires:		python-oslo-sphinx
 Requires:		jq
 
 #
-# patches_base=b51d5a1840b4e985b7daa334814a10590af00d53
+# patches_base=c3fb309727671130a32b4c19de48ec22c8530aa1
 #
 Patch0001: 0001-Use-packaged-template-directory-path.patch
 Patch0002: 0002-Switch-back-to-oslo-sphinx.patch
@@ -97,6 +97,9 @@ cp -r doc/build/html/* %{buildroot}%{_datadir}/doc/tripleo/html
 %{_datadir}/doc/tripleo
 
 %changelog
+* Thu Oct 1 2014 James Slagle <jslagle@redhat.com> 0.0.5-1
+- Update to c3fb309727671130a32b4c19de48ec22c8530aa1
+
 * Mon Sep 29 2014 James Slagle <jslagle@redhat.com> 0.0.4-1
 - Update to b51d5a1840b4e985b7daa334814a10590af00d53
 
