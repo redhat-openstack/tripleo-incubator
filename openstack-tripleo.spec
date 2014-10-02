@@ -95,7 +95,7 @@ cp -r doc/build/html/* %{buildroot}%{_datadir}/doc/tripleo/html
 %{_datadir}/doc/tripleo
 
 %changelog
-* Thu Oct 1 2014 James Slagle <jslagle@redhat.com> 0.0.5-1
+* Thu Oct 2 2014 James Slagle <jslagle@redhat.com> 0.0.5-1
 - Update to c3fb309727671130a32b4c19de48ec22c8530aa1
 
 * Mon Sep 29 2014 James Slagle <jslagle@redhat.com> 0.0.4-1
