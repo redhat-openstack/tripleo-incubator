@@ -26,7 +26,6 @@ Requires:		jq
 #
 Patch0001: 0001-Use-packaged-template-directory-path.patch
 Patch0002: 0002-Switch-back-to-oslo-sphinx.patch
-Patch0003: 0003-Support-passing-x86_64-to-create-nodes.patch
 
 %description
 TripleO is a program aimed at installing, upgrading and operating OpenStack
@@ -55,7 +54,6 @@ This package contains documentation files for TripleO.
 
 %patch0001 -p1
 %patch0002 -p1
-%patch0003 -p1
 
 %install
 # scripts

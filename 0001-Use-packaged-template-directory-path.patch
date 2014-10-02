@@ -1,4 +1,4 @@
-From bf35c5a7c23c7c1843f220be56fb5675d76af54f Mon Sep 17 00:00:00 2001
+From c8305e0fa028451eee3f6976eef5e9f6976b2c3e Mon Sep 17 00:00:00 2001
 From: James Slagle <jslagle@redhat.com>
 Date: Wed, 3 Sep 2014 17:13:40 -0400
 Subject: [PATCH] Use packaged template directory path
