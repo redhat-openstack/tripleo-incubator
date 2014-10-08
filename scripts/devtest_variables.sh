@@ -53,16 +53,6 @@ if [ -z "$TRIPLEO_ROOT" -a -d ~/.cache/tripleo ]; then
   TRIPLEO_ROOT=~/.cache/tripleo
 fi
 
-## NOTE(gfidente): Exit if TRIPLEO_ROOT is still empty or misconfigured
-if [ -z "$TRIPLEO_ROOT" -o ! -d $TRIPLEO_ROOT/tripleo-incubator/scripts ]; then
-  echo 'ERROR: Cannot find $TRIPLEO_ROOT/tripleo-incubator/scripts'
-  echo '       To use devtest you must export the TRIPLEO_ROOT variable and have cloned tripleo-incubator within that directory.'
-  echo '       Check http://docs.openstack.org/developer/tripleo-incubator/devtest.html#initial-checkout for instructions.'
-  return 1
-fi
-### --include
-export PATH=$TRIPLEO_ROOT/tripleo-incubator/scripts:$TRIPLEO_ROOT/dib-utils/bin:$PATH
-
 ## #. It's posible to deploy the Undercloud without a UI and its dependent elements.
 ##    The dependent image elements in Undercloud are Horizon, Tuskar-UI (not included
 ##    yet, Tuskar UI element is not finished) and  Ceilometer. In Overcloud it is
